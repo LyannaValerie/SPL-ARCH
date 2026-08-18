@@ -5,7 +5,8 @@
 //! * the Core A value and outcome domains, and `embed`;
 //! * the Core A primitive semantics;
 //! * `K`, the semantic contract representation, its type checker and its
-//!   evaluator.
+//!   evaluator;
+//! * the canonical artifact encoding and content identity.
 //!
 //! It holds no execution plan, no register machine and no interpreter for
 //! anything other than `K`.
@@ -16,8 +17,11 @@
 
 #![forbid(unsafe_code)]
 
+pub mod artifact;
+pub mod canonical;
 pub mod demo;
 pub mod eval;
+pub mod id;
 pub mod k;
 pub mod outcome;
 pub mod prims;
