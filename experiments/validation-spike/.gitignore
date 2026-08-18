@@ -1,0 +1,7 @@
+# Pinned third-party toolchain, fetched and built by scripts/setup-tools.sh.
+# Never vendored into the repository.
+.tools/
+
+# Generated proofs, checker logs and mutated problems. Regenerate with
+# scripts/run-all.sh; only the summarized results are committed.
+results/raw/work/

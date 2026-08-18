@@ -424,3 +424,27 @@ Recommended experimental order:
 ```
 
 Do not build the SPL surface language first. Do not begin with FPGA. The first success criterion is a correct trust boundary, not a spectacular demo with blinking hardware.
+
+## 12. Execution status
+
+This section records which parts of the plan above have actually been executed. It does not modify the frozen theory or the frozen implementation plan.
+
+```text
+Stage 0  Validation Feasibility Spike   EXECUTED — PASS
+Stage 1  Semantic Vertical Slice        NOT STARTED
+```
+
+**Stage 0 — executed.** Evidence, harness and report: [`../experiments/validation-spike/`](../experiments/validation-spike/).
+
+Outcome:
+
+```text
+STAGE 0 PASS — CPC/ETHOS SELECTED
+
+cvc5 -> CPC    -> Ethos     PASS
+cvc5 -> Alethe -> Carcara   FAIL — TRUST/Hole
+```
+
+The selected mechanism requires the proof to carry an explicit `(reference "<problem>.smt2")` command; Ethos' `--reference=` command-line option does not enforce the assumption-binding check on the pinned version and would produce a silent false accept. The solver-in-TCB fallback was **not** required and is not adopted.
+
+Stage 0 used hand-written `QF_BV` fixtures. It did not implement `DeriveObligation`, the artifact layer, `K_ref`/`P_ref` identity, or anything else from Stage 1 onward, so nothing in sections 1–11 above is yet confirmed by execution.

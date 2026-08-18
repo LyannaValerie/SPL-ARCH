@@ -9,8 +9,10 @@ A hipótese V1 é deliberadamente estreita: produtores de realizações e planne
 ```text
 Theoretical V1: FROZEN
 Implementation Plan V1: FROZEN
-Implementation: NOT STARTED
-Next implementation gate: STAGE 0 — VALIDATION FEASIBILITY SPIKE
+SPL-0 implementation: NOT STARTED
+Stage 0 (Validation Feasibility Spike): EXECUTED — PASS
+Validation mechanism: cvc5 -> CPC -> Ethos, with exact problem binding
+Next implementation gate: STAGE 1 — SEMANTIC VERTICAL SLICE
 Universal originality: NOT CLAIMED
 Prior-art subsumption: NOT ESTABLISHED
 ```
@@ -22,8 +24,14 @@ A V1 não é ainda uma linguagem de programação, IR, compilador ou runtime fin
 - [`docs/SPL-ARCH-V1.md`](docs/SPL-ARCH-V1.md) — especificação teórica congelada.
 - [`docs/SPL-0-IMPLEMENTATION-PLAN-V1.md`](docs/SPL-0-IMPLEMENTATION-PLAN-V1.md) — plano de implementação SPL-0 congelado, do Stage 0 à primeira release end-to-end.
 - [`docs/AGENT-C-STAGE0.md`](docs/AGENT-C-STAGE0.md) — prompt executável para o primeiro agente implementador, limitado ao Validation Feasibility Spike.
-- [`docs/EXPERIMENTS-V1.md`](docs/EXPERIMENTS-V1.md) — plano experimental teórico e bateria adversarial.
+- [`docs/EXPERIMENTS-V1.md`](docs/EXPERIMENTS-V1.md) — plano experimental teórico, bateria adversarial e estado de execução.
 - [`docs/PRIOR-ART.md`](docs/PRIOR-ART.md) — estado de prior art, não-reivindicações e demarcação provisória.
+
+## Evidência experimental
+
+- [`experiments/validation-spike/`](experiments/validation-spike/) — Stage 0, o primeiro trabalho técnico executado: dez obrigações `QF_BV` escritas à mão, os dois pipelines candidatos de validação, ataques de mutação de prova e de desvinculação prova/problema, e o relatório do resultado.
+
+O Stage 0 selecionou `cvc5 -> CPC -> Ethos` como mecanismo de validação, sob a condição de que a prova carregue um comando `(reference "<problema>.smt2")` explícito. `cvc5 -> Alethe -> Carcara` falhou o gate por conter passos `hole` não verificados em obrigações de bit-vector. O fallback de colocar o solver dentro do Runtime Semantic TCB **não** foi necessário.
 
 ## Núcleo conceitual
 
