@@ -431,7 +431,8 @@ This section records which parts of the plan above have actually been executed. 
 
 ```text
 Stage 0  Validation Feasibility Spike   EXECUTED — PASS
-Stage 1  Semantic Vertical Slice        NOT STARTED
+Stage 1  Semantic Vertical Slice        EXECUTED — COMPLETE
+Stage 2  Trust Vertical Slice           NOT STARTED
 ```
 
 **Stage 0 — executed.** Evidence, harness and report: [`../experiments/validation-spike/`](../experiments/validation-spike/).
@@ -447,4 +448,21 @@ cvc5 -> Alethe -> Carcara   FAIL — TRUST/Hole
 
 The selected mechanism requires the proof to carry an explicit `(reference "<problem>.smt2")` command; Ethos' `--reference=` command-line option does not enforce the assumption-binding check on the pinned version and would produce a silent false accept. The solver-in-TCB fallback was **not** required and is not adopted.
 
-Stage 0 used hand-written `QF_BV` fixtures. It did not implement `DeriveObligation`, the artifact layer, `K_ref`/`P_ref` identity, or anything else from Stage 1 onward, so nothing in sections 1–11 above is yet confirmed by execution.
+Stage 0 used hand-written `QF_BV` fixtures. It did not implement `DeriveObligation`, the artifact layer, `K_ref`/`P_ref` identity, or anything else from Stage 1 onward.
+
+**Stage 1 — executed.** Code, report and Definition of Done: [`STAGE-1-SEMANTIC-SLICE.md`](./STAGE-1-SEMANTIC-SLICE.md), implemented in [`crates/spl-core`](../crates/spl-core) and [`crates/spl-plan`](../crates/spl-plan).
+
+Outcome:
+
+```text
+K representable and executable            yes
+P representable, validated, executable    yes
+K evaluator independent of Plan VM        yes
+one K, two structurally different valid P yes
+well-typed P that is semantically wrong   yes, disagrees on 255 of 256 inputs
+deterministic identifiable K/P/Q artifacts yes
+```
+
+Stage 1 implemented no trust mechanism at all: no `DeriveObligation`, `VCArtifact`, `ValidationEvidence`, `AssurancePolicy`, `AdmissionRecord`, `ActivationGate`, guard evaluation, planner or SMT. The wrong realization is *observed* to disagree by a test; nothing in the system rejects it, because nothing in the system yet admits anything.
+
+The adversarial matrix in sections 5–8 above remains unconfirmed by execution: it depends on the admission boundary, which arrives in Stage 2.
