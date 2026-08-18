@@ -1,0 +1,11 @@
+case	expected	cvc5	z3	cpc_proof_steps	cpc_trust_steps	ethos	ethos_bound	alethe_proof_steps	alethe_hole_steps	carcara	pipeline_a_verdict	pipeline_b_verdict
+01_wrapping_equiv_valid.smt2	unsat	unsat	unsat	11	0	correct	correct/reference-command	13	4	holey	ACCEPT	REJECT
+02_checked_intermediate_overflow_invalid.smt2	sat	sat	sat	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a-negative-case	n/a-negative-case
+03_guarded_specialization_valid.smt2	unsat	unsat	unsat	367	0	correct	correct/reference-command	361	82	invalid	ACCEPT	REJECT
+04_guard_widening_invalid.smt2	sat	sat	sat	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a-negative-case	n/a-negative-case
+05_outcome_tag_mismatch_invalid.smt2	sat	sat	sat	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a-negative-case	n/a-negative-case
+06_outcome_encoding_non_collapse_valid.smt2	unsat	unsat	unsat	5	0	correct	correct/reference-command	8	1	holey	ACCEPT	REJECT
+07_signed_overflow_rule_boundary_valid.smt2	unsat	unsat	unsat	551	0	correct	correct/reference-command	551	77	invalid	ACCEPT	REJECT
+08_wrapping_modeled_as_checked_invalid.smt2	sat	sat	sat	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a-negative-case	n/a-negative-case
+09_width_confused_overflow_check_invalid.smt2	sat	sat	sat	n/a	n/a	n/a	n/a	n/a	n/a	n/a	n/a-negative-case	n/a-negative-case
+10_signed_shift_specialization_valid.smt2	unsat	unsat	unsat	437	0	correct	correct/reference-command	372	46	invalid	ACCEPT	REJECT

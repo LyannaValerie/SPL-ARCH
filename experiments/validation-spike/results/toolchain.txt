@@ -1,0 +1,21 @@
+# Stage-0 toolchain, as recorded by scripts/run-all.sh
+
+os               Linux 6.18.5-fc-v20 x86_64 GNU/Linux
+cvc5             cvc5 1.3.4 [git f3b21c4 on branch HEAD]
+ethos_commit     221641668d75eaffd308e0511d63962cea937110
+ethos_binary     9bcb8b55f1bb4a20a97143f992202ab8d13de2d751821730bfe7f2bdb3f97af8
+carcara          carcara 1.1.0 [git main 6624ea8]
+carcara_commit   6624ea80cf1985ada473c0705869c78353e4282d
+carcara_rustc    rustc 1.87.0 (17067e9ac 2025-05-09)
+z3               Z3 version 5.1.0 - 64 bit
+rustc            rustc 1.94.1 (e408947bf 2026-03-25)
+cargo            cargo 1.94.1 (29ea6fb6a 2026-03-24)
+cmake            cmake version 3.28.3
+cxx              g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+python           3.11.15
+
+cvc5            official static release asset cvc5-Linux-x86_64-static.zip
+ethos           built from source at the commit cvc5 pins in contrib/get-ethos-checker
+carcara         built from source; the project publishes no tagged release
+z3              independent second solver, used only to cross-check sat/unsat
+                expectations. It is not part of any admission-evidence path.

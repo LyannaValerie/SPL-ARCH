@@ -1,0 +1,12 @@
+sat
+(
+(define-fun x () (_ BitVec 8) #b01000000)
+(define-fun t () (_ BitVec 8) #b10111111)
+(define-fun ovf1 () Bool true)
+(define-fun u () (_ BitVec 8) #b01000000)
+(define-fun ovf2 () Bool true)
+(define-fun k_tag () (_ BitVec 1) #b1)
+(define-fun k_val () (_ BitVec 8) #b00000000)
+(define-fun p_tag () (_ BitVec 1) #b0)
+(define-fun p_val () (_ BitVec 8) #b01000000)
+)

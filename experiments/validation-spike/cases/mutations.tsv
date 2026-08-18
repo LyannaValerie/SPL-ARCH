@@ -1,0 +1,22 @@
+# Problem-misbinding mutations for the Stage-0 spike.
+#
+# Each row defines a logical mutation of an expected-UNSAT fixture. The proof of
+# the unmutated fixture is preserved and re-checked against the mutated problem.
+# The Stage-0 equivalent of a K_ref/P_ref hash mismatch is exactly this: the
+# proof is internally fine, but it is a proof about a different logical problem.
+#
+# Every mutation below turns the fixture from UNSAT into SAT, i.e. it destroys
+# the property the preserved proof claims to establish. Any checker that still
+# accepts the old proof against the mutated problem has not bound the proof to
+# the problem.
+#
+# columns: case<TAB>mutation_id<TAB>count<TAB>search<TAB>replace<TAB>description
+# count: 0 = replace every occurrence, N = replace the first N occurrences
+01_wrapping_equiv_valid.smt2	changed_constant	0	#x03	#x04	multiplier 3 becomes 4, so the two expressions differ
+01_wrapping_equiv_valid.smt2	changed_operator	1	(bvmul x #x03)	(bvsub x #x03)	the multiplication becomes a subtraction
+03_guarded_specialization_valid.smt2	changed_constant	0	#x64	#x65	the added constant 100 becomes 101
+03_guarded_specialization_valid.smt2	changed_guard	1	(bvult x #x9c)	(bvult x #xff)	the guard is widened past the overflow boundary
+03_guarded_specialization_valid.smt2	changed_comparison	1	(bvult x #x9c)	(bvule x #x9c)	the strict guard comparison becomes non-strict and admits x = 156
+06_outcome_encoding_non_collapse_valid.smt2	changed_constant	1	(= k_tag #b1)	(= k_tag #b0)	the SemanticError tag becomes a Return tag
+07_signed_overflow_rule_boundary_valid.smt2	changed_comparison	1	(bvslt (bvadd a b) #x00)	(bvsle (bvadd a b) #x00)	the sign-case overflow test becomes non-strict and fires on a + b = 0
+10_signed_shift_specialization_valid.smt2	changed_guard	1	(bvsge x #x00)	(bvsge x #x80)	the lower guard becomes vacuous and admits negative inputs
