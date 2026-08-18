@@ -1,0 +1,12 @@
+[package]
+name = "spl-plan"
+description = "SPL-0 Plan IR, its structural validator, the Plan VM, and the S/Q execution-substrate identities."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+spl-core = { path = "../spl-core" }
+ciborium.workspace = true

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/spl-core"]
+members = ["crates/spl-core", "crates/spl-plan"]
 
 [workspace.package]
 version = "0.1.0"
